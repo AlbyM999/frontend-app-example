@@ -1,6 +1,8 @@
 import axios from 'axios';
 
-const baseURL = 'http://127.0.0.1:8000/api/match';
+//vul hier de route naar de api group in
+
+const baseURL = 'http://127.0.0.1:8000/api/user';
 
 class UserCrud {
   create(payload) {
@@ -27,31 +29,36 @@ class UserCrud {
   get() {
     return axios
       .get(baseURL)
-      .then((response: any) => {
-        console.log(response.data);
+      .then((response) => {
+        console.table(response.data);
         return response;
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  getOnId(ID: any) {
+  getOnId(ID) {
     return axios
-      .get(`${baseURL}/tournament/${ID}`)
-      .then((response: any) => {
-        console.log(response.data);
+      .get(`${baseURL}/${ID}`)
+      .then((response) => {
+        console.table(response.data);
         return response;
       })
       .catch((error) => {
         console.log(error);
       });
   }
-  delete(ID: string) {
+  delete(ID) {
     return axios
       .delete(`${baseURL}/${ID}`)
-      .then()
+      .then(
+        (response)=>{
+          console.log(response);
+          return response;
+        }
+      )
       .catch((error) => console.error(error));
   }
 }
 
-export default new tournamentCRUD();
+export default new UserCrud();
