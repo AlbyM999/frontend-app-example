@@ -2,7 +2,7 @@ import axios from 'axios';
 
 //vul hier de route naar de api group in
 
-const baseURL = 'http://127.0.0.1:8000/api/user';
+const baseURL = 'https://api.publicapis.org/entries';
 
 class UserCrud {
   create(payload) {
@@ -31,7 +31,7 @@ class UserCrud {
       .get(baseURL)
       .then((response) => {
         console.table(response.data);
-        return response;
+        return response.data;
       })
       .catch((error) => {
         console.log(error);
